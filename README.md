@@ -26,4 +26,4 @@ Complete code of the final project  to deploy and inference a machine learning m
 `Uvicorn running on http://0.0.0.0:8000`
 
 
-5. Visit the app on the browser via `http://0.0.0.0:8000/predictions` to get the predictions
+5. ### Visit the app on the browser via `http://0.0.0.0:8000/predictions` to get the predictions
