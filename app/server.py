@@ -2,8 +2,8 @@ from fastapi import FastAPI
 import joblib
 import pandas as pd
 
-model = joblib.load('app/model.joblib')
-data = pd.read_csv('app/final_dataset.csv')
+model = joblib.load('model.joblib')
+data = pd.read_csv('final_dataset.csv')
 
 
 # function to predict optimal price
