@@ -2,6 +2,32 @@
 <html>
 <head>
     <title>Price Prediction</title>
+
+    <style>
+        body {
+          padding: 20px;
+          margin: 10px;
+          background-color: #eff3f2;
+        }
+  
+        #btn {
+          background-color: #040b3c;
+          color: #fff;
+          border: 0;
+          padding: 15px 30px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+  
+        input[type="text"],
+        input[type="number"], input[type="date"], select {
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          width: 40%;
+        }
+  
+      </style>
 </head>
 <body>
     <h1>Product Price Prediction</h1>
@@ -31,7 +57,7 @@
         <label for="quantity">Pick date:</label>
         <input type="date" id="date" name="date" required><br><br>
 
-        <input type="submit" value="Predict">
+        <input id="btn" type="submit" value="Predict">
     </form>
     
     {% if prediction_text %}

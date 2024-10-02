@@ -10,6 +10,7 @@ model = joblib.load('model.joblib')
 # Initialize the Flask app
 app = Flask(__name__)
 
+
 # Define the home route
 @app.route('/')
 def index():
@@ -22,7 +23,6 @@ def index():
 def predict():
     if request.method == 'POST':
         try:
-            print(request)
             # Get input values from the form
             demand_elasticity = float(request.form['demand_elasticity'])
             competitor_pricing = float(request.form['competitor_pricing'])
@@ -32,8 +32,6 @@ def predict():
             date = datetime.strptime(request.form['date'], '%Y-%m-%d')
             month = int(date.month)
             day_of_week = int(date.day)
-
-            print([age, customer_preferences, quantity, demand_elasticity, competitor_pricing, month, day_of_week])
             
             # Prepare the input data for prediction
             input_features = np.array([[age, customer_preferences, quantity, demand_elasticity, competitor_pricing, month, day_of_week]])
@@ -41,10 +39,12 @@ def predict():
             # Make prediction
             predicted_price = model.predict(input_features)[0]
             
+            categories = enumerate(['Beauty', 'Clothing', 'Electronics'])
+
             # Return the result to the user
-            return render_template('index.html', prediction_text=f'Predicted Price per Unit: ${predicted_price:.2f}')
+            return render_template('index.html', categories=categories, prediction_text=f'Predicted Price per Unit: ${predicted_price:.2f}')
         except Exception as e:
-            return render_template('index.html', prediction_text=f'Error occurred: {e}')
+            return render_template('index.html', categories=categories, prediction_text=f'Error occurred: {e}')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
