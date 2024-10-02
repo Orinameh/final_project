@@ -1,3 +1,7 @@
 /.ipynb_checkpoints
 
 /venv
+
+/fast_api_app
+
+__pycache__
