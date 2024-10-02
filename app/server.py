@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 model = joblib.load('app/model.joblib')
-data = pd.read_csv('./final_dataset.csv')
+data = pd.read_csv('app/final_dataset.csv')
 
 
 # function to predict optimal price
@@ -16,7 +16,7 @@ app = FastAPI()
 # Landing page of the application
 @app.get("/")
 def root():
-    return {'message': 'Price optimization model deployment'}
+    return {'message': 'Price optimization model deployment. Visit http://127.0.0.1:8000/predictions to see the predictions in json format'}
 
 # Prediction page of the application
 @app.get("/predictions")
